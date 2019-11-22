@@ -3,3 +3,4 @@ class Settings():
 		self.screen_width = 1366
 		self.screen_height = 768
 		self.bg_color = (0,0,0)
+		self.char_speed = 1
