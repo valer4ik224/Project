@@ -4,6 +4,7 @@ import sys
 
 def check_events(settings, screen, character, bullets):
     for event in pygame.event.get():
+        #Check events
         if event.type == pygame.QUIT:
             sys.exit()
 
