@@ -37,7 +37,6 @@ def run_game():
                 soil.rect.x += x * soil.rect.width
                 soil.rect.y += y * soil.rect.height
                 soils.add(soil)
-                print(soil.rect.x * soil.rect.width, x)
                 x += 1
         x = 0
         y += 1

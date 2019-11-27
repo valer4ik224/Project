@@ -1,5 +1,7 @@
 import pygame
 import sys
+from bullet import Bullet
+from character import Character
 
 
 def check_events(settings, screen, character, bullets):
@@ -27,6 +29,9 @@ def update_screen(screen, settings, soils, character, bullets):
     pygame.display.flip()
 
 
+
+
+
 def key_checkdown_events(event, character, screen, settings, bullets):
 
     if event.key == pygame.K_d:
@@ -38,7 +43,7 @@ def key_checkdown_events(event, character, screen, settings, bullets):
     if event.key == pygame.K_s:
         character.moving_down = True
     if event.key == pygame.K_SPACE:
-        fireBullets(bullets, screen, settings, ship)
+        fireBullets(bullets, screen, settings, character)
     if event.key == pygame.K_ESCAPE:
         sys.exit()
 
