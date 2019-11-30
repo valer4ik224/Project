@@ -62,8 +62,6 @@ class Character():
 
     def blitme(self):
 
-        print(self.animation, self.animation // self.fps, len(self.horizontalD))
-
         if len(self.horizontalD) <= self.animation // self.fps:
             self.animation = 0
         if len(self.topD) <= self.animation // self.fps:
