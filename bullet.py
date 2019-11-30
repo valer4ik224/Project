@@ -10,6 +10,7 @@ class Bullet(Sprite):
         self.rect.top = character.rect.top
 
     def update(self):
+        if last_move
         self.rect.y -= self.settings.bullet_speed
     def draw_bullet(self):
         pygame.draw.rect(self.screen, self.settings.bullet_color, self.rect)

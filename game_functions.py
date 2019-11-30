@@ -2,6 +2,7 @@ import pygame
 import sys
 from bullet import Bullet
 from character import Character
+import character
 
 
 def check_events(settings, screen, character, bullets):
@@ -42,7 +43,9 @@ def key_checkdown_events(event, character, screen, settings, bullets):
         character.moving_up = True
     if event.key == pygame.K_s:
         character.moving_down = True
-    if event.key == pygame.K_SPACE:
+    if event.key == pygame.K_SPACE and last_move == 'top':
+        fireBullets(bullets, screen, settings, character)
+    if event.key == pygame.K_SPACE and last_move == 'top':
         fireBullets(bullets, screen, settings, character)
     if event.key == pygame.K_ESCAPE:
         sys.exit()
