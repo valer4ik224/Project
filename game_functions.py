@@ -8,7 +8,7 @@ from settings import Settings
 
 def check_events(settings, screen, character, bullets):
     for event in pygame.event.get():
-        #Check events
+
         if event.type == pygame.QUIT:
             sys.exit()
 
@@ -53,14 +53,16 @@ def key_checkdown_events(event, character, screen, settings, bullets):
         character.moving_up = True
     if event.key == pygame.K_s:
         character.moving_down = True
-    if event.key == pygame.K_SPACE:
+    if event.key == pygame.K_e:
         fireBullets(bullets, screen, settings, character)
+    if event.key == pygame.K_SPACE:
+       character.attack = True
     if event.key == pygame.K_ESCAPE:
         sys.exit()
 
 
 def key_checkup_events(event, character):
-
+        character.animation = 0
         if event.key == pygame.K_d:
             character.moving_right = False
         if event.key == pygame.K_a:
