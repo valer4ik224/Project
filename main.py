@@ -53,7 +53,6 @@ def run_game():
         gf.check_events(settings, screen, character, bullets)
         character.update()
         bullets.update()
-        gf.update_bullets(bullets)
 
 run_game()
 

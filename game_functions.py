@@ -3,6 +3,7 @@ import sys
 from bullet import Bullet
 from character import Character
 import character
+from settings import Settings
 
 
 def check_events(settings, screen, character, bullets):
@@ -25,6 +26,15 @@ def update_screen(screen, settings, soils, character, bullets):
         i.blitme()
     character.blitme()
     for bullet in bullets.sprites():
+        if bullet.rect.right > settings.screen_width:
+            bullets.remove(bullet)
+        if bullet.rect.top > settings.screen_height:
+            bullets.remove(bullet)
+        if bullet.rect.left < 0:
+            bullets.remove(bullet)
+        if bullet.rect.bottom < 0:
+            bullets.remove(bullet)
+
         bullet.draw_bullet()
 
     pygame.display.flip()
@@ -43,9 +53,7 @@ def key_checkdown_events(event, character, screen, settings, bullets):
         character.moving_up = True
     if event.key == pygame.K_s:
         character.moving_down = True
-    if event.key == pygame.K_SPACE and last_move == 'top':
-        fireBullets(bullets, screen, settings, character)
-    if event.key == pygame.K_SPACE and last_move == 'top':
+    if event.key == pygame.K_SPACE:
         fireBullets(bullets, screen, settings, character)
     if event.key == pygame.K_ESCAPE:
         sys.exit()
@@ -62,16 +70,21 @@ def key_checkup_events(event, character):
         if event.key == pygame.K_s:
             character.moving_down = False
 
-def update_bullets(bullets):
-    for bullet in bullets:
-        if bullet.rect.bottom <= 0:
-            bullets.remove(bullet)
-        bullets.update()
 
 
-def fireBullets(bullets, screen, settings, ship):
+
+def fireBullets(bullets, screen, settings, character):
     if len(bullets) < settings.bullets_allowed:
-        new_bullet = Bullet(screen, settings, ship)
+        new_bullet = Bullet(screen, settings, character)
+        if character.last_move == 'right':
+            new_bullet.move_x = settings.bullet_speed
+        elif character.last_move == 'left':
+            new_bullet.move_x = -settings.bullet_speed
+        if character.last_move == 'top':
+            new_bullet.move_y = -settings.bullet_speed
+        elif character.last_move == 'bottom':
+            new_bullet.move_y = settings.bullet_speed
+
         bullets.add(new_bullet)
 
 
