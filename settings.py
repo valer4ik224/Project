@@ -8,3 +8,6 @@ class Settings:
         self.bullet_width = 15
         self.bullet_height = 15
         self.bullets_allowed = 3
+        self.enemie_speed = 1
+        self.fleet_drop_speed = 10
+        self.fleet_direction = 1

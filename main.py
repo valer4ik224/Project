@@ -5,6 +5,7 @@ from settings import Settings
 from character import Character
 from map import Soil
 from pygame.sprite import Group
+from enemie import Enemie
 
 
 def run_game():
@@ -14,8 +15,9 @@ def run_game():
     pygame.display.set_caption("GAME")
     soils = Group()
     bullets = Group()
+    enemies = Group()
     character = Character(screen, settings)
-
+    gf.create_fleet(settings, screen, enemies)
     map = [ ['X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X'],
             ['X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X'],
             ['X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X'],
@@ -49,8 +51,8 @@ def run_game():
 
     while True:
 
-        gf.update_screen(screen, settings, soils, character, bullets)
-        gf.check_events(settings, screen, character, bullets)
+        gf.update_screen(screen, settings, soils, character, bullets, enemies)
+        gf.check_events(settings, screen, character, bullets, enemies)
         character.update()
         bullets.update()
 
